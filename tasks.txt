@@ -1,0 +1,46 @@
+1) Run following commands:
+mix deps.get
+mix test
+mix phx.server
+
+app should be up and running
+localhost:4000/api/v1/blog/get_all_posts should return list of posts
+
+For simplicity the project uses ets local storage without supervisor, which is limited to process lifecycle.
+This means the data will be removed after application restart or upon ets process exception
+
+test_app_web folder contains web logic
+test_app folder contains main application logic
+
+2) Check out router in test_app_web/router.ex
+it contains our routing logic. For now all the request are made by get request - so we can test controllers without using request client, directly from browser.
+The router calls controller method
+
+3) Go to controllers/blog_controller.ex
+it contains all the methods which are called by pattern matching requests
+conn - contains our connaction data
+params - can be passed by querystring or as request params
+
+Controller calles coresponding logic from test_app folder (blog.ex)
+
+4) Go to test_app/blog/post.ex
+This is definition of our %Post{} struct
+
+5) Go to test_app/blog.ex
+This file can be treated as UI for our app Blog context
+
+6) Create delete post function:
+0 - request should contain post id
+1 - add empty controller method
+2 - bind controller method to router
+3 - call the coresponding Blog function (delete_post_by_id) from controller with id params
+4 - add logic to Blog.delete_post_by_id
+
+7) Add delete post function
+
+8) Add tests in test/test_app/blog_test.exs for completed tasks, usually tests are written before coding
+
+9*) Add tests for controller endpoint
+
+10*) Refactor app to use proper HTTP Request Method, change controller tests
+from now it will be easier to check app behaviour by running tests, rather than making requests yourself
