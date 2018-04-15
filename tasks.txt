@@ -36,7 +36,7 @@ This file can be treated as UI for our app Blog context
 3 - call the coresponding Blog function (delete_post_by_id) from controller with id params
 4 - add logic to Blog.delete_post_by_id
 
-7) Add delete post function
+7) Add update post function
 
 8) Add tests in test/test_app/blog_test.exs for completed tasks, usually tests are written before coding
 
